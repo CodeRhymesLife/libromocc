@@ -5,6 +5,10 @@
 #ifndef ROMOCC_ZMQUTILS_H
 #define ROMOCC_ZMQUTILS_H
 
+#ifdef __APPLE__
+    #define be64toh(x) ((uint64_t)(x))
+#endif
+
 #include <zmq.h>
 #include <assert.h>
 #include "romocc/core/Object.h"
