@@ -7,6 +7,22 @@
 namespace romocc
 {
 
+namespace Ur3e
+{
+    constexpr double dh_d[6] = {0.15185, 0, 0, 0.13105, 0.08535, 0.0921};
+    constexpr double dh_a[6] = {0,-0.24355,-0.2132,0,0,0};
+    constexpr double dh_alpha[6] = {M_PI_2, 0, 0, M_PI_2, -M_PI_2, 0};
+    constexpr double dh_home[6] = {0, -M_PI_2, -M_PI_2 ,-M_PI_2, M_PI_2, 0};
+
+    KDL::Chain KDLChain(){
+        KDL::Chain Ur3e;
+        for (unsigned int i = 0; i < 6; i++) {
+            Ur3e.addSegment(KDL::Segment(KDL::Joint(KDL::Joint::RotZ), KDL::Frame::DH(dh_a[i], dh_alpha[i], dh_d[i], 0.0)));
+        }
+        return Ur3e;
+    }
+}
+
 namespace Ur5
 {
     constexpr double dh_d[6] = {0.089159, 0, 0, 0.10915, 0.09465, 0.0823};
