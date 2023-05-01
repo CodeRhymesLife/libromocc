@@ -1,2 +1,3 @@
+romocc_add_example(doplExample doplExample.cpp)
 romocc_add_example(robotExample RobotExample.cpp)
 romocc_add_example(robotListen RobotListen.cpp)
