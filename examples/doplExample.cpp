@@ -12,13 +12,20 @@ using namespace romocc;
 
 int main(int argc, char *argv[])
 {
+    auto robotIP = "192.168.153.131";
+    if (argc >= 2) {
+        robotIP = argv[1];
+    }
+
+    std::cout << "Robot IP: " << robotIP << std::endl;
+
     auto print_message = []()
     {
         std::cout << "State updated" << "\n";
     };
 
     auto ur3e = Robot::New();
-    ur3e->configure(Manipulator(ManipulatorType::UR3e), "192.168.153.131", 30003);
+    ur3e->configure(Manipulator(ManipulatorType::UR3e), robotIP, 30003);
 
     if(ur3e->connect())
     {
